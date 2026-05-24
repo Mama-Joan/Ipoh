@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ipoh Family Trip · Sep 9–13, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --forest: #2D4A3E;
+    --forest-mid: #3D6357;
+    --forest-light: #6B9E8F;
+    --gold: #C9973A;
+    --gold-light: #E8C17A;
+    --rust: #B85C3A;
+    --sand: #E8DFD0;
+    --sand-mid: #D4C8B5;
+    --text-dark: #1C2B25;
+    --text-mid: #4A6358;
+    --text-light: #7A9589;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    color: white;
+    padding: 64px 40px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(201,151,58,0.12);
+  }
+  .hero::after {
+    content: ''; position: absolute;
+    bottom: -40px; left: 20%;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(107,158,143,0.12);
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 56px); font-weight: 700; line-height: 1.1; color: #fff; margin-bottom: 16px; }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.65); font-weight: 300; line-height: 1.6; margin-bottom: 32px; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 12px; padding: 6px 14px; border-radius: 100px; }
+
+  /* TABS */
+  .tabs-bar {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--sand);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  .tabs-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 16px 20px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .tab-btn:hover { color: var(--text-dark); }
+  .tab-btn.active { color: var(--forest); border-bottom-color: var(--forest); }
+  .tab-btn .tab-icon { font-size: 15px; }
+
+  /* TAB PANELS */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* MAIN */
+  .main { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px; padding-left: 2px; }
+
+  /* DAY CARDS */
+  .day-card { background: var(--warm-white); border: 1px solid var(--sand); border-radius: 16px; margin-bottom: 16px; overflow: hidden; transition: box-shadow 0.2s; }
+  .day-card:hover { box-shadow: 0 4px 24px rgba(45,74,62,0.08); }
+  .day-head { display: flex; align-items: stretch; border-bottom: 1px solid var(--sand); }
+  .day-num { background: var(--forest); color: #fff; padding: 16px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 72px; }
+  .day-num .num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1; }
+  .day-num .lbl { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .day-meta { padding: 14px 20px; flex: 1; }
+  .day-date { font-size: 12px; color: var(--text-light); margin-bottom: 4px; }
+  .day-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+  .day-location { font-size: 11px; color: var(--forest-light); margin-top: 4px; font-weight: 500; }
+  .day-hotel { padding: 8px 20px; background: rgba(45,74,62,0.03); border-bottom: 1px solid var(--sand); display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-mid); }
+  .hotel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--forest-light); flex-shrink: 0; }
+  .slots { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .slot { padding: 16px 20px; border-right: 1px solid var(--sand); }
+  .slot:last-child { border-right: none; }
+  .slot-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .slot-tag::before { content: ''; display: inline-block; width: 8px; height: 2px; border-radius: 2px; }
+  .slot.morning .slot-tag { color: var(--gold); }
+  .slot.morning .slot-tag::before { background: var(--gold); }
+  .slot.afternoon .slot-tag { color: var(--forest-mid); }
+  .slot.afternoon .slot-tag::before { background: var(--forest-mid); }
+  .slot.evening .slot-tag { color: var(--rust); }
+  .slot.evening .slot-tag::before { background: var(--rust); }
+  .slot-activity { font-size: 13px; font-weight: 500; color: var(--text-dark); line-height: 1.4; margin-bottom: 5px; }
+  .slot-note { font-size: 11px; color: var(--text-light); line-height: 1.5; font-weight: 300; }
+  .slot-note.empty { font-style: italic; }
+
+  /* TIPS */
+  .tips-section { margin-top: 40px; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+  .tip { background: var(--warm-white); border: 1px solid var(--sand); border-radius: 12px; padding: 16px; font-size: 13px; color: var(--text-mid); line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }
+  .tip-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+
+  /* PASSPORT FORM */
+  .form-wrap {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .form-intro { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--sand); }
+  .form-intro strong { color: var(--text-dark); font-weight: 500; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-grid.full { grid-template-columns: 1fr; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid); }
+  .field input, .field select {
+    background: var(--cream);
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    width: 100%;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(107,158,143,0.15);
+  }
+  .field input::placeholder { color: var(--text-light); }
+  .form-divider { grid-column: 1 / -1; border: none; border-top: 1px solid var(--sand); margin: 8px 0; }
+  .form-section-title { grid-column: 1 / -1; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-light); padding-top: 4px; }
+  .submit-row { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .btn-submit {
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn-submit:hover { background: var(--forest-mid); }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled { background: var(--sand-mid); cursor: not-allowed; }
+  .submit-note { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+
+  /* STATUS MESSAGES */
+  .msg { border-radius: 10px; padding: 14px 18px; font-size: 13px; line-height: 1.6; display: none; margin-top: 16px; }
+  .msg.success { background: #E8F5F0; border: 1px solid #9FD4BE; color: #1A5C42; }
+  .msg.error { background: #FDF0ED; border: 1px solid #F0B8A8; color: #7A2E1A; }
+  .msg.loading { background: #F0F5F3; border: 1px solid var(--sand); color: var(--text-mid); }
+
+  /* PROGRESS TRACKER */
+  .progress-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    padding: 24px 32px;
+  }
+  .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .progress-title { font-size: 14px; font-weight: 500; color: var(--text-dark); }
+  .progress-count { font-size: 13px; color: var(--text-light); }
+  .progress-bar-wrap { background: var(--sand); border-radius: 100px; height: 6px; margin-bottom: 16px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--forest-light); border-radius: 100px; transition: width 0.4s ease; width: 0%; }
+  .progress-note { font-size: 12px; color: var(--text-light); }
+
+
+
+  /* FOOTER */
+  footer { text-align: center; padding: 32px 24px; font-size: 11px; color: var(--text-light); letter-spacing: 0.05em; border-top: 1px solid var(--sand); max-width: 760px; margin: 0 auto; }
+
+  /* RESPONSIVE */
+  @media (max-width: 560px) {
+    .hero { padding: 48px 20px 40px; }
+    .main { padding: 28px 16px 60px; }
+    .slots { grid-template-columns: 1fr; }
+    .slot { border-right: none; border-bottom: 1px solid var(--sand); }
+    .slot:last-child { border-bottom: none; }
+    .day-num { min-width: 60px; padding: 14px 16px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-wrap { padding: 20px; }
+    .tab-btn { padding: 14px 14px 12px; font-size: 12px; }
+  }
+
+  @media print { body { background: white; } .day-card { break-inside: avoid; } .tabs-bar { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Family Travel Itinerary</div>
+    <h1>Ipoh <span>Family Trip</span></h1>
+    <p class="hero-sub">Sep 9 – 13, 2026 · Singapore → Ipoh · 13 Pax · 5 Days 4 Nights</p>
+    <div class="hero-pills">
+      <span class="pill">👨‍👩‍👧‍👦 Group of 13</span>
+      <span class="pill">🏨 Lost World Hotel → Ipoh City</span>
+      <span class="pill">🎢 Lost World of Tambun</span>
+      <span class="pill">🛶 Tasik Cermin Boat Tour</span>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="switchTab('itinerary', this)">
+      <span class="tab-icon">🗓️</span> Itinerary
+    </button>
+    <button class="tab-btn" onclick="switchTab('budget', this)">
+      <span class="tab-icon">💰</span> Budget & Flights
+    </button>
+    <button class="tab-btn" onclick="switchTab('passport', this)">
+      <span class="tab-icon">🛂</span> Submit Your Details
+    </button>
+  </div>
+</div>
+
+<!-- ITINERARY TAB -->
+<div id="tab-itinerary" class="tab-panel active">
+  <div class="main">
+    <div class="section-label">Day-by-day schedule</div>
+
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><span class="num">1</span><span class="lbl">Day</span></div>
+        <div class="day-meta">
+          <div class="day-date">Friday, Sep 9</div>
+          <div class="day-title">Arrival & First Taste of Tambun</div>
+          <div class="day-location">📍 SG → Ipoh → Lost World of Tambun</div>
+        </div>
+      </div>
+      <div class="day-hotel"><span class="hotel-dot"></span> Overnight: Lost World Hotel</div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-tag">Morning</div><div class="slot-activity">Arrival</div><div class="slot-note">Drive from Singapore, check into Lost World Hotel</div></div>
+        <div class="slot afternoon"><div class="slot-tag">Afternoon</div><div class="slot-activity">Petting Zoo</div><div class="slot-note">Easy, gentle intro to the park — great for kids & elderly</div></div>
+        <div class="slot evening"><div class="slot-tag">Evening</div><div class="slot-activity">Ipoh Street & Luminous Forest</div><div class="slot-note">Magical night walk through the park's glowing forest trail</div></div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><span class="num">2</span><span class="lbl">Day</span></div>
+        <div class="day-meta">
+          <div class="day-date">Saturday, Sep 10</div>
+          <div class="day-title">Full Day at the Waterpark</div>
+          <div class="day-location">📍 Lost World of Tambun Waterpark</div>
+        </div>
+      </div>
+      <div class="day-hotel"><span class="hotel-dot"></span> Overnight: Lost World Hotel</div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-tag">Morning</div><div class="slot-activity">Waterpark</div><div class="slot-note">Slides, wave pool & lazy river — arrive early for fewer crowds</div></div>
+        <div class="slot afternoon"><div class="slot-tag">Afternoon</div><div class="slot-activity">Tin Valley</div><div class="slot-note">Explore Ipoh's tin mining heritage within the park</div></div>
+        <div class="slot evening"><div class="slot-tag">Evening</div><div class="slot-activity">Night Petting Zoo & Spa</div><div class="slot-note">Night zoo experience + hot spring spa to unwind the group</div></div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><span class="num">3</span><span class="lbl">Day</span></div>
+        <div class="day-meta">
+          <div class="day-date">Sunday, Sep 11</div>
+          <div class="day-title">Move to Ipoh City</div>
+          <div class="day-location">📍 Lost World of Tambun → Ipoh City</div>
+        </div>
+      </div>
+      <div class="day-hotel"><span class="hotel-dot"></span> Overnight: Ipoh City</div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-tag">Morning</div><div class="slot-activity">Chill & check out</div><div class="slot-note">Slow morning, pack up & check out of Lost World Hotel</div></div>
+        <div class="slot afternoon"><div class="slot-tag">Afternoon</div><div class="slot-activity">Ipoh City</div><div class="slot-note">Check in, explore Old Town, Concubine Lane & street art</div></div>
+        <div class="slot evening"><div class="slot-tag">Evening</div><div class="slot-activity">Ipoh City</div><div class="slot-note">Group dinner — famous bean sprout chicken or dim sum</div></div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><span class="num">4</span><span class="lbl">Day</span></div>
+        <div class="day-meta">
+          <div class="day-date">Wednesday, Sep 12</div>
+          <div class="day-title">Mirror Lake & Cave Temple</div>
+          <div class="day-location">📍 Ipoh</div>
+        </div>
+      </div>
+      <div class="day-hotel"><span class="hotel-dot"></span> Overnight: Ipoh</div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-tag">Morning</div><div class="slot-activity">Tasik Cermin Boat Tour</div><div class="slot-note">Mirror Lake boat ride through limestone karsts — go early for the best reflection</div></div>
+        <div class="slot afternoon"><div class="slot-tag">Afternoon</div><div class="slot-activity">Kek Lok Tong Cave Temple</div><div class="slot-note">Serene cave temple with reflection garden — flat & senior-friendly</div></div>
+        <div class="slot evening"><div class="slot-tag">Evening</div><div class="slot-activity">Free time</div><div class="slot-note">Night markets, desserts or relax at the hotel</div></div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><span class="num">5</span><span class="lbl">Day</span></div>
+        <div class="day-meta">
+          <div class="day-date">Thursday, Sep 13</div>
+          <div class="day-title">Last Bites & Departure</div>
+          <div class="day-location">📍 Ipoh → Airport → Singapore</div>
+        </div>
+      </div>
+      <div class="day-hotel"><span class="hotel-dot"></span> Check-out & fly home 🇸🇬</div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-tag">Morning</div><div class="slot-activity">AM Shopping</div><div class="slot-note">White coffee, egg tarts & Ipoh biscuits to bring back to SG</div></div>
+        <div class="slot afternoon"><div class="slot-tag">Afternoon</div><div class="slot-activity">Airport return to SG</div><div class="slot-note">Head to Ipoh Airport (IPH) for return flight to Singapore</div></div>
+        <div class="slot evening"><div class="slot-tag">Evening</div><div class="slot-activity">—</div><div class="slot-note empty">Back home in Singapore</div></div>
+      </div>
+    </div>
+
+    <div class="tips-section">
+      <div class="section-label">Tips for your group of 13</div>
+      <div class="tips-grid">
+        <div class="tip"><div class="tip-icon">🚐</div><span>Hire a 16-seater minibus from Singapore for the full trip — easiest way to keep the whole group together.</span></div>
+        <div class="tip"><div class="tip-icon">🎟️</div><span>Book Lost World of Tambun tickets on Klook in advance. Group discounts available. Park is closed on Tuesdays!</span></div>
+        <div class="tip"><div class="tip-icon">🛶</div><span>Tasik Cermin is best in the morning for the mirror reflection effect. Queue early — it fills up fast on weekends.</span></div>
+        <div class="tip"><div class="tip-icon">🧓</div><span>Kek Lok Tong Cave Temple is flat and beautifully maintained — perfect for elderly members of the group.</span></div>
+        <div class="tip"><div class="tip-icon">🍽️</div><span>Call ahead to reserve for 13 pax — especially for bean sprout chicken at Lou Wong or Onn Kee restaurant.</span></div>
+        <div class="tip"><div class="tip-icon">🏨</div><span>For the city stay (Days 3–5), WEIL Hotel is a great pick — 4.5-star, central, attached to Ipoh Parade mall.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET & FLIGHTS TAB -->
+<div id="tab-budget" class="tab-panel">
+  <div class="main">
+
+    <!-- FLIGHT DETAILS -->
+    <div class="section-label">Flight details</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+
+      <!-- OUTBOUND -->
+      <div style="background:var(--warm-white); border:1px solid var(--sand); border-radius:16px; overflow:hidden;">
+        <div style="background:var(--forest); padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Outbound</span>
+          <span style="font-size:11px; font-weight:500; color:var(--gold-light);">Wed, 9 Sep</span>
+        </div>
+        <div style="padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;">
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; line-height:1; color:var(--text-dark);">06:35</div>
+              <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Singapore (SIN)</div>
+              <div style="font-size:10px; color:var(--text-light);">Changi Airport</div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 8px;">
+              <div style="font-size:10px; color:var(--text-light);">1h 15m</div>
+              <div style="display:flex; align-items:center; width:100%; gap:4px;">
+                <div style="height:1px; flex:1; background:var(--sand-mid);"></div>
+                <span style="font-size:14px;">✈️</span>
+                <div style="height:1px; flex:1; background:var(--sand-mid);"></div>
+              </div>
+              <div style="font-size:10px; color:var(--forest-light); font-weight:500;">Direct</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; line-height:1; color:var(--text-dark);">07:50</div>
+              <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Ipoh (IPH)</div>
+              <div style="font-size:10px; color:var(--text-light);">Sultan Azlan Shah</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--sand); padding-top:12px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:12px; color:var(--text-mid);">Scoot · 1 pax</span>
+            <span style="font-size:13px; font-weight:500; color:var(--text-dark);">SGD 102.20</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RETURN -->
+      <div style="background:var(--warm-white); border:1px solid var(--sand); border-radius:16px; overflow:hidden;">
+        <div style="background:var(--forest); padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Return</span>
+          <span style="font-size:11px; font-weight:500; color:var(--gold-light);">Sun, 13 Sep</span>
+        </div>
+        <div style="padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;">
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; line-height:1; color:var(--text-dark);">14:35</div>
+              <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Ipoh (IPH)</div>
+              <div style="font-size:10px; color:var(--text-light);">Sultan Azlan Shah</div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 8px;">
+              <div style="font-size:10px; color:var(--text-light);">1h 20m</div>
+              <div style="display:flex; align-items:center; width:100%; gap:4px;">
+                <div style="height:1px; flex:1; background:var(--sand-mid);"></div>
+                <span style="font-size:14px;">✈️</span>
+                <div style="height:1px; flex:1; background:var(--sand-mid);"></div>
+              </div>
+              <div style="font-size:10px; color:var(--forest-light); font-weight:500;">Direct</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; line-height:1; color:var(--text-dark);">15:55</div>
+              <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Singapore (SIN)</div>
+              <div style="font-size:10px; color:var(--text-light);">Changi Airport</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--sand); padding-top:12px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:12px; color:var(--text-mid);">Scoot · 1 pax</span>
+            <span style="font-size:13px; font-weight:500; color:var(--text-dark);">SGD 226.98</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BUDGET BREAKDOWN -->
+    <div class="section-label">Estimated cost per person</div>
+
+    <div style="background:var(--warm-white); border:1px solid var(--sand); border-radius:16px; overflow:hidden; margin-bottom:16px;">
+
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; padding:18px 24px; border-bottom:1px solid var(--sand);">
+        <div>
+          <div style="font-size:14px; font-weight:500; color:var(--text-dark);">✈️ Scoot Round Trip (no luggage)</div>
+          <div style="font-size:12px; color:var(--text-light); margin-top:2px;">SIN–IPH · Wed 9 Sep 06:35 &nbsp;|&nbsp; IPH–SIN · Sun 13 Sep 14:35</div>
+        </div>
+        <div style="font-size:15px; font-weight:500; color:var(--text-dark); text-align:right;">SGD 329</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; padding:18px 24px; border-bottom:1px solid var(--sand);">
+        <div>
+          <div style="font-size:14px; font-weight:500; color:var(--text-dark);">🏨 Lost World Hotel (2 nights)</div>
+          <div style="font-size:12px; color:var(--text-light); margin-top:2px;">Days 1–2 · Sep 9–11</div>
+        </div>
+        <div style="font-size:15px; font-weight:500; color:var(--text-dark); text-align:right;">SGD 145</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; padding:18px 24px; border-bottom:1px solid var(--sand);">
+        <div>
+          <div style="font-size:14px; font-weight:500; color:var(--text-dark);">🏨 Ipoh City Hotel (2 nights)</div>
+          <div style="font-size:12px; color:var(--text-light); margin-top:2px;">Days 3–4 · Sep 11–13</div>
+        </div>
+        <div style="font-size:15px; font-weight:500; color:var(--text-dark); text-align:right;">SGD 150</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; padding:18px 24px; border-bottom:1px solid var(--sand);">
+        <div>
+          <div style="font-size:14px; font-weight:500; color:var(--text-dark);">🚐 Transport around Ipoh</div>
+          <div style="font-size:12px; color:var(--text-light); margin-top:2px;">Full duration · shared across group</div>
+        </div>
+        <div style="font-size:15px; font-weight:500; color:var(--text-dark); text-align:right;">SGD 85</div>
+      </div>
+
+      <!-- TOTAL -->
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; padding:20px 24px; background:var(--forest);">
+        <div>
+          <div style="font-size:13px; font-weight:500; color:rgba(255,255,255,0.7); letter-spacing:0.05em; text-transform:uppercase;">Estimated total per pax</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:3px;">Excludes meals, activities & personal spending</div>
+        </div>
+        <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--gold-light); text-align:right;">SGD 709</div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--warm-white); border:1px solid var(--sand); border-radius:12px; padding:16px 20px; font-size:13px; color:var(--text-mid); line-height:1.7;">
+      💡 <strong style="color:var(--text-dark);">Not included in estimate:</strong> meals (~SGD 20–35/day), Lost World of Tambun entry (~SGD 60–80/pax), activities, and personal shopping. Budget an extra <strong style="color:var(--text-dark);">SGD 200–300</strong> for spending money.<br><br>
+      ✈️ <strong style="color:var(--text-dark);">Flight prices note:</strong> The prices shown are based on a weekend check. We will monitor the ticket prices again on a weekday to see if there is a better rate — stay tuned for updates!
+    </div>
+
+  </div>
+</div>
+
+
+<!-- PASSPORT TAB -->
+<div id="tab-passport" class="tab-panel">
+  <div class="main">
+
+
+
+    <div class="progress-card" style="margin-bottom: 24px;">
+      <div class="progress-header">
+        <span class="progress-title">Group submissions</span>
+        <span class="progress-count" id="progress-text">0 of 13 submitted</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      <div class="progress-note">Each person submits their own details. All data goes directly to the trip organiser's Google Sheet.</div>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-intro">
+        Please fill in your travel details exactly as they appear on your passport. This information will be used for trip coordination and hotel check-in. <strong>All fields are required.</strong>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-section-title">Personal information</div>
+
+        <div class="field">
+          <label for="firstName">First name (as in passport)</label>
+          <input type="text" id="firstName" placeholder="e.g. Wei Ling" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="lastName">Last name (as in passport)</label>
+          <input type="text" id="lastName" placeholder="e.g. Tan" autocomplete="family-name">
+        </div>
+
+        <div class="field">
+          <label for="birthdate">Date of birth</label>
+          <input type="date" id="birthdate">
+        </div>
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="" disabled selected>Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+
+        <hr class="form-divider">
+        <div class="form-section-title">Passport details</div>
+
+        <div class="field">
+          <label for="passportNo">Passport number</label>
+          <input type="text" id="passportNo" placeholder="e.g. E1234567A" style="text-transform: uppercase;">
+        </div>
+        <div class="field">
+          <label for="issueDate">Date of issue</label>
+          <input type="date" id="issueDate">
+        </div>
+
+        <div class="field">
+          <label for="expiryDate">Expiry date</label>
+          <input type="date" id="expiryDate">
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">Submit my details →</button>
+        <span class="submit-note">Your info goes directly to<br>the trip organiser's Google Sheet.</span>
+      </div>
+
+      <div class="msg loading" id="msg-loading">⏳ Submitting your details…</div>
+      <div class="msg success" id="msg-success">✅ <strong>Details submitted!</strong> The trip organiser has your info. See you in Ipoh! 🌴</div>
+      <div class="msg error" id="msg-error">❌ <strong>Something went wrong.</strong> Please try again or send your details directly to the organiser.</div>
+    </div>
+
+    <!-- SETUP INSTRUCTIONS -->
+    <div style="background: var(--warm-white); border: 1px solid var(--sand); border-radius: 16px; padding: 28px 32px; margin-top: 8px;">
+      <div class="section-label" style="margin-bottom: 16px;">How to connect to Google Sheets (one-time setup)</div>
+      <ol style="font-size: 13px; color: var(--text-mid); line-height: 2; padding-left: 20px;">
+        <li>Open <strong>Google Sheets</strong> and create a new spreadsheet. Add these column headers in row 1:<br>
+          <code style="font-size: 11px; background: var(--cream); padding: 2px 8px; border-radius: 4px; font-family: monospace;">Timestamp | First Name | Last Name | Birthdate | Gender | Passport No | Date of Issue | Expiry Date</code>
+        </li>
+        <li>Click <strong>Extensions → Apps Script</strong> in your Google Sheet.</li>
+        <li>Delete any existing code and paste the Apps Script code below.</li>
+        <li>Click <strong>Save</strong>, then <strong>Deploy → New deployment</strong>.</li>
+        <li>Set type to <strong>Web app</strong>, set "Who has access" to <strong>Anyone</strong>, then click <strong>Deploy</strong>.</li>
+        <li>Copy the <strong>Web app URL</strong> you receive.</li>
+        <li>In this HTML file, find <code style="font-family: monospace; font-size: 11px; background: var(--cream); padding: 2px 6px; border-radius: 4px;">https://script.google.com/macros/s/AKfycbyrEZipMZ0YlbMjGM2Ph_Vj3VbJCrIi0AREn1rJ8ipBruvonxlDMe0AG28dOQ88SAH4bw/exec</code> and replace it with your URL.</li>
+        <li>Save and re-upload to Netlify. Done! ✅</li>
+      </ol>
+
+      <div style="margin-top: 24px; background: #1C2B25; border-radius: 10px; padding: 20px 24px; overflow-x: auto;">
+        <div style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-family: monospace;">Google Apps Script — paste this into Extensions → Apps Script</div>
+        <pre style="font-family: monospace; font-size: 12px; color: #A8D5C2; line-height: 1.8; white-space: pre-wrap;">function doPost(e) {
+  var sheet = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getActiveSheet();
+
+  var data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    new Date(),
+    data.firstName,
+    data.lastName,
+    data.birthdate,
+    data.gender,
+    data.passportNo,
+    data.issueDate,
+    data.expiryDate
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ result: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Ipoh Family Trip · Sep 9–13, 2026 · Group of 13 · 5 Days 4 Nights ✦
+</footer>
+
+<script>
+  // ⚠️ Replace this with your Google Apps Script Web App URL after deployment
+  var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrEZipMZ0YlbMjGM2Ph_Vj3VbJCrIi0AREn1rJ8ipBruvonxlDMe0AG28dOQ88SAH4bw/exec";
+
+  // Tab switching
+  function switchTab(tabId, btn) {
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Track submissions in localStorage for the progress bar
+  function getCount() {
+    return parseInt(localStorage.getItem('ipoh_submissions') || '0');
+  }
+
+  function updateProgress(count) {
+    var total = 13;
+    var pct = Math.min((count / total) * 100, 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = count + ' of ' + total + ' submitted';
+  }
+
+  updateProgress(getCount());
+
+  // Form submission
+  function submitForm() {
+    var fields = {
+      firstName:  document.getElementById('firstName').value.trim(),
+      lastName:   document.getElementById('lastName').value.trim(),
+      birthdate:  document.getElementById('birthdate').value,
+      gender:     document.getElementById('gender').value,
+      passportNo: document.getElementById('passportNo').value.trim().toUpperCase(),
+      issueDate:  document.getElementById('issueDate').value,
+      expiryDate: document.getElementById('expiryDate').value
+    };
+
+    // Validate required fields
+    var required = ['firstName','lastName','birthdate','gender','passportNo','issueDate','expiryDate'];
+    for (var i = 0; i < required.length; i++) {
+      if (!fields[required[i]]) {
+        alert('Please fill in all required fields before submitting.');
+        return;
+      }
+    }
+
+
+    showMsg('loading');
+    document.getElementById('submitBtn').disabled = true;
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fields)
+    })
+    .then(function() {
+      showMsg('success');
+      var newCount = getCount() + 1;
+      localStorage.setItem('ipoh_submissions', newCount);
+      updateProgress(newCount);
+      document.getElementById('submitBtn').style.display = 'none';
+    })
+    .catch(function() {
+      showMsg('error');
+      document.getElementById('submitBtn').disabled = false;
+    });
+  }
+
+  function showMsg(type, customHtml) {
+    ['loading','success','error'].forEach(function(t) {
+      document.getElementById('msg-' + t).style.display = 'none';
+    });
+    var el = document.getElementById('msg-' + type);
+    if (customHtml) el.innerHTML = customHtml;
+    el.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
